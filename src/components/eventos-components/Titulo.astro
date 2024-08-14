@@ -1,0 +1,160 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section>
+    <h2>Eventos Próximos</h2>
+    <div class="container">
+        <div class="subtitle">
+            <span>1ER ENCUENTRO 2024 - SJG</span>
+        </div>
+        <div class="text">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quia! Dolores, doloremque, voluptatem, 
+                doloribus, voluptas, quisquam, quos, dolores, consequuntur, velit, fugiat, asperiores, 
+                voluptatibus, dolorem, quibusdam, quod, molestiae, voluptatum, eaque, quaerat, 
+                aspernatur, quidem, voluptas, doloremque, consequatur, vel, quam, asperiores, 
+                quibusdam, voluptatibus, dolorem, quisquam, quos, dolores, consequuntur, velit, 
+                fugiat, asperiores, voluptatibus, dolorem, quibusdam, quod, molestiae, voluptatum, 
+                eaque, quaerat, aspernatur, quidem, voluptas, doloremque, consequatur, vel, quam, 
+                asperiores, quibusdam, voluptatibus, dolorem, quisquam, quos, dolores, consequuntur, 
+                velit, fugiat, asperiores, voluptatibus, dolorem, quibusdam, quod, molestiae, 
+                voluptatum, eaque, quaerat, aspernatur, quidem, voluptas, doloremque, consequatur, 
+                vel, quam, asperiores, quibusdam, voluptatibus, dolorem, quisquam, quos, dolores.
+            </p>
+        </div>
+        <div class="image-desktop">
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="800px" height="500px" class="img-desktop"/>
+        </div>
+        <div class="image-mobile">
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="320px" height="150px" class="img-desktop"/>
+        </div>
+        <div class="ubicacion-inscripcion">
+            <div class="ubicacion">
+                <div class="fecha">
+                    <img src="./calendar-stats.svg" alt="">
+                    <p>
+                       1 de enero de 2025
+                    </p>
+                </div>
+                <div class="pin">
+                    <img src="./map-pin.svg" alt="">
+                    <p>
+                        Guaviare, San José del Guaviare.
+                    </p>
+                </div>
+            </div>
+            <div class="inscripcion">
+                <button>INSCRIBÍTE AQUÍ</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+    section {
+        text-align: center;
+        background-color: beige;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    section h2 {
+        margin-top: 20px;
+    }
+
+    .container {
+        text-align: left;
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    section .container .subtitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+        background-color: #17ab5c;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    section .container .text {
+        margin-top: 20px;
+    }
+
+    section .container .image-desktop {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    section .container .image-mobile {
+        display: none;
+    }
+
+    section .container .ubicacion-inscripcion {
+        
+    }
+
+    section .container .ubicacion-inscripcion {
+        display: flex;
+        flex-direction: row;
+    }
+
+    section .container .ubicacion-inscripcion div {
+        width: 70%;
+    }
+
+    .fecha, .pin {
+        display: flex;
+        flex-direction: row;
+        margin: 30px 20px 30px 20px;
+    }
+
+    .fecha p, .pin p {
+        margin-left: 10px;
+    }
+
+    section .container .ubicacion-inscripcion .inscripcion {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section .container .ubicacion-inscripcion .inscripcion button {
+        border: none;
+        background-color: #17ab5c;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        width: 300px;
+        font-weight: bolder;
+    }
+
+    @media (max-width: 768px) {
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        section .container .image-desktop {
+            display: none;
+        }
+
+        section .container .image-mobile {
+            display: block;
+            margin-top: 20px;
+        }
+
+        section .container .ubicacion-inscripcion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    }
+</style>

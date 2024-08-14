@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section>
+    <h2>Nuestros encuentros son dirigidos a</h2>
+    <div class="encuentros">
+        <div class="encuentros-text">
+            <p>
+                <em>Biapora</em> es una iniciativa transformadora para los habitantes del Guaviare, 
+                ofreciendo una alternativa enriquecedora que combina el disfrute del tiempo 
+                libre con la adopción de hábitos saludables. A través de nuestras jornadas de caminería, 
+                no solo promovemos el ejercicio físico, sino también el aprendizaje continuo y la responsabilidad ambiental. 
+            </p>
+            <p>
+                Cada caminata es una oportunidad para que los participantes se conecten con la naturaleza, 
+                adquiriendo un mayor conocimiento sobre la biodiversidad y la importancia de su conservación. 
+                Además, nos esforzamos por incentivar y mantener la limpieza de los sitios turísticos, 
+                fomentando una cultura de respeto y cuidado por el entorno natural. En Biapora, 
+                creemos que la caminería no solo es un medio para ejercitarse, sino también una 
+                herramienta poderosa para crear conciencia ambiental y fortalecer el sentido de comunidad en la región.
+            </p>
+        </div>
+        <div class="encuentros-image-desktop">
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="600px" height="300px" class="img-desktop"/>
+        </div>
+        <div class="encuentros-image-mobile">
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="320px" height="150px" class="img-mobile"/>
+        </div>
+    </div>
+</section>
+
+<style>
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .encuentros {
+        display: flex;
+        flex-direction: row;
+        width: 1200px;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .encuentros-text p:nth-child(2) {
+        margin-top: 20px;
+    }
+
+    .encuentros-text em {
+        font-weight: bold;
+    }
+
+    section h2 {
+        text-align: center;
+    }
+
+    section .encuentros-image-desktop {
+        margin-left: 30px;
+    }
+
+    section .encuentros-image-mobile .img-mobile {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        section h2 {
+            font-size: 18px;
+        }
+
+        section .encuentros-image-desktop .img-desktop {
+            display: none;
+        }
+
+        section .encuentros-image-mobile .img-mobile {
+         display: block;
+        }
+
+        section .encuentros {
+            display: flex;
+            flex-direction: column;
+            width: 320px;
+        }
+
+        section .encuentros-text {
+            width: 320px;
+            font-size: 14px;
+        }
+
+        section .encuentros-image-mobile {
+            margin-top: 20px;
+        }
+
+
+    }
+</style>

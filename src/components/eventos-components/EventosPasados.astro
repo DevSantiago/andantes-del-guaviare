@@ -1,0 +1,125 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section>
+    <h2>Eventos Pasados</h2>
+    <div class="container">
+        <div class="subtitle">
+            <span>1ER ENCUENTRO 2024 - SJG</span>
+        </div>
+        <div class="text">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quia! Dolores, doloremque, voluptatem, 
+                doloribus, voluptas, quisquam, quos, dolores, consequuntur, velit, fugiat, asperiores, 
+                voluptatibus, dolorem, quibusdam, quod, molestiae, voluptatum, eaque, quaerat, 
+                aspernatur, quidem, voluptas, doloremque, consequatur, vel, quam, asperiores, 
+                quibusdam, voluptatibus, dolorem, quisquam, quos, dolores, consequuntur, velit, 
+                fugiat, asperiores, voluptatibus, dolorem, quibusdam, quod, molestiae, voluptatum, 
+                eaque, quaerat, aspernatur, quidem, voluptas, doloremque, consequatur, vel, quam, 
+                asperiores, quibusdam, voluptatibus, dolorem, quisquam, quos, dolores, consequuntur, 
+                velit, fugiat, asperiores, voluptatibus, dolorem, quibusdam, quod, molestiae, 
+                voluptatum, eaque, quaerat, aspernatur, quidem, voluptas, doloremque, consequatur, 
+                vel, quam, asperiores, quibusdam, voluptatibus, dolorem, quisquam, quos, dolores.
+            </p>
+        </div>
+    </div>
+    <div class="ubicacion-imagen">
+        <div class="ubicacion">
+            <div class="fecha">
+                <img src="./calendar-stats.svg" alt="">
+                <p>
+                   1 de enero de 2025
+                </p>
+            </div>
+            <div class="pin">
+                <img src="./map-pin.svg" alt="">
+                <p>
+                    Guaviare, San José del Guaviare.
+                </p>
+            </div>
+        </div>
+        <div class="image-desktop">
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="800px" height="500px" class="img-desktop"/>
+        </div>
+        <div class="image-mobile">
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="320px" height="150px" class="img-mobile"/>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    section .container {
+        text-align: left;
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    section .container .subtitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+        background-color: #17ab5c;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    section .container .text {
+        margin-top: 20px;
+    }
+
+    section .container .ubicacion-imagen {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    section .image-mobile {
+        display: none;
+    }
+    
+    section .ubicacion-imagen {
+        display: flex;
+        flex-direction: row;
+        margin-top: 30px;
+        align-items: center;
+    }
+    
+    .ubicacion .fecha, .ubicacion .pin {
+        display: flex;
+        flex-direction: row;
+        margin: 30px 20px 30px 20px;
+    }
+
+    .fecha p, .pin p {
+        margin-left: 10px;        
+    }
+
+    @media (max-width: 768px) {
+
+        section .ubicacion-imagen {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        section .image-desktop {
+            display: none;
+        }
+
+        section .image-mobile {
+            display: block;
+        }
+
+
+
+    }
+
+</style>

@@ -1,0 +1,158 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section>
+    <div class="text-container">
+        <h2>PRÓXIMOS EVENTOS</h2>
+        <div class="img-container-mobile">
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/02-andantes-del-guaviare.jpg" alt="Image" width="300px" height="150px" class="img-mobile"/>
+        </div>
+        <div class="text">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Esse quibusdam et similique, nostrum nihil provident nemo 
+                error mollitia facilis, ut quis libero aspernatur saepe minus 
+                temporibus ipsum sit! Asperiores, culpa.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Dicta odio, architecto nemo cum blanditiis illo, voluptates 
+                provident facere, repellendus ratione cumque. 
+                Totam dolorem consequatur enim, dignissimos at odio minima qui?
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Dicta odio, architecto nemo cum blanditiis illo, voluptates 
+                provident facere, repellendus ratione cumque. 
+                Totam dolorem consequatur enim, dignissimos at odio minima qui?
+            </p>
+        </div>
+        <div class="button">
+            <button>INSCRÍBETE AQUÍ</button>
+        </div>
+    </div>
+    <div class="image-container-desktop">
+        <Image src="https://storage.googleapis.com/andantes-del-guaviare/02-andantes-del-guaviare.jpg" alt="Image" width="600px" height="400px" clas="img-desktop"/>
+    </div>
+
+</section>
+
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    section {
+        display: flex;
+        justify-content: center;
+        flex-direction: row-reverse;
+        margin-top: 30px;
+    }
+
+    section .text-container {
+        width: 45%;
+        padding: 20px 10px 20px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    section .text-container .img-container-mobile {
+        display: none;
+    }
+
+    section .text-container h2 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    section .text-container h2, section .text-container .text {
+        margin-bottom: 30px;
+    }
+
+    section .text-container .button {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+ 
+    }
+
+    section .text-container .button button {
+        background: #17ab5c;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 150px;
+        height: 50px;
+        font-weight: bold;
+    }
+    
+    section .image-container-desktop {
+        background-color: bisque;
+        width: 600px;
+        height: 400px;
+    }
+
+    section .image-container .img-desktop {
+        width: 600px;
+        height: 400px;
+    }
+
+    @media (max-width: 768px) {
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 0;
+            margin-top: 10px;
+        }
+
+        section .text-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        section .text-container h2, section .text-container .text {
+            margin-bottom: 15px;
+        }
+
+        section .text-container h1 {
+            font-size: 25px;
+            text-align: center;
+        }
+
+        section .text-container .img-container-mobile {
+            display: block;
+            width: 300px;
+            height: 150px;
+        }
+
+        section .image-container-desktop {
+            display: none;
+        }
+
+        section .image-container-mobile .img-mobile {
+            object-fit: cover;
+        }
+
+        section .text-container .text {
+            margin-top: 20px;
+            width: 300px;
+        }
+
+        section .text-container .text p {
+            font-size: 14px;
+        }
+
+        section .text-container .button {
+            margin-top: 10px;
+        }
+
+        section .text-container .button button {
+            width: 110px;
+            height: 40px;
+        }
+    }
+
+</style>
+

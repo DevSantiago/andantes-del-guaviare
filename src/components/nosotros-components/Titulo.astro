@@ -1,0 +1,106 @@
+---
+
+---
+
+<section>
+    <div class="title">
+        <h1>Biapora - ¡Andantes del Guaviare!</h1>
+    </div>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://storage.googleapis.com/andantes-del-guaviare/02-andantes-del-guaviare.jpg" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://storage.googleapis.com/andantes-del-guaviare/03-andantes-del-guaviare.jpg" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image 3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+
+    section {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 50px;
+
+    }
+
+    .carousel {
+        position: relative;
+        width: 900px;
+        height: 600px;
+        margin: auto;
+        overflow: hidden;
+        border: 1px solid #ddd;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+        min-width: 100%;
+        transition: opacity 0.5s ease;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+
+    @media (max-width: 768px) {
+        section .title {
+            font-size: 14px;
+        }
+        .carousel {
+            width: 320px;
+            height: 200px;
+            z-index: 1;
+        }
+    }
+
+
+
+</style>
+
+<script>
+    const carouselInner = document.querySelector('.carousel-inner');
+    const items = document.querySelectorAll('.carousel-item');
+
+    let currentIndex = 0;
+    const intervalTime = 3000; // Tiempo en milisegundos entre cada cambio (3 segundos)
+
+    function showItem(index) {
+    const offset = -index * 100;
+    carouselInner.style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextItem() {
+    currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+    showItem(currentIndex);
+    }
+
+    // Intervalo para cambio automático
+    let autoSlide = setInterval(nextItem, intervalTime);
+
+    // Opcional: Pausar en hover y reanudar
+    carouselInner.addEventListener('mouseenter', () => {
+    clearInterval(autoSlide);
+    });
+
+    carouselInner.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(nextItem, intervalTime);
+    });
+</script>
