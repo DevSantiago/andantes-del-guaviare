@@ -6,9 +6,11 @@ import { Image } from "astro:assets";
     <div class="container">
         <h2>CON EL APOYO DE</h2>
         <div class="avatar-container-desktop">
-            <Image src="https://storage.googleapis.com/andantes-del-guaviare/03-andantes-del-guaviare.jpg" alt="Image" width="300px" height="150px" class="img-desktop"/>
-            <Image src="https://storage.googleapis.com/andantes-del-guaviare/03-andantes-del-guaviare.jpg" alt="Image" width="300px" height="150px" class="img-desktop"/>
-            <Image src="https://storage.googleapis.com/andantes-del-guaviare/03-andantes-del-guaviare.jpg" alt="Image" width="300px" height="150px" class="img-desktop"/>
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/alcadia-retorno-png.png" alt="Image" width="200px" height="150px" class="img-desktop"/>
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/alcaldia-calamar-png.png" alt="Image" width="200px" height="150px" class="img-desktop"/>
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/alcaldia-sanjose-png.png" alt="Image" width="200px" height="150px" class="img-desktop"/>
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/empoagua-png.png" alt="Image" width="200px" height="150px" class="img-desktop"/>
+            <Image src="https://storage.googleapis.com/andantes-del-guaviare/energuaviare-png.png" alt="Image" width="200px" height="150px" class="img-desktop"/>
         </div>
     </div>
 </section>
@@ -39,7 +41,7 @@ import { Image } from "astro:assets";
 
     section .container .avatar-container-desktop {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         justify-items: center;
         margin-top: 30px;
 
@@ -52,11 +54,15 @@ import { Image } from "astro:assets";
             gap: 20px;
         }
 
-        section .container .avatar-container-desktop .img-desktop {
-            width: 200px;
-            height: 100px;
+        section .container h2 {
+            font-size: 25px;
         }
 
+        section .container .avatar-container-desktop .img-desktop {
+            width: 140px;
+            height: 90px;
+        }
+    }
 
 
 </style>

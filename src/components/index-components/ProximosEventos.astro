@@ -9,23 +9,20 @@ import { Image } from "astro:assets";
             <Image src="https://storage.googleapis.com/andantes-del-guaviare/02-andantes-del-guaviare.jpg" alt="Image" width="300px" height="150px" class="img-mobile"/>
         </div>
         <div class="text">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Esse quibusdam et similique, nostrum nihil provident nemo 
-                error mollitia facilis, ut quis libero aspernatur saepe minus 
-                temporibus ipsum sit! Asperiores, culpa.
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Dicta odio, architecto nemo cum blanditiis illo, voluptates 
-                provident facere, repellendus ratione cumque. 
-                Totam dolorem consequatur enim, dignissimos at odio minima qui?
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Dicta odio, architecto nemo cum blanditiis illo, voluptates 
-                provident facere, repellendus ratione cumque. 
-                Totam dolorem consequatur enim, dignissimos at odio minima qui?
+            <span>¡Prepárate para una experiencia inolvidable en el 1er ENCUENTRO REGIONAL DE CAMINANTES 2024 en San José del Guaviare!</span>
+            <p> 
+                Este evento te invita a explorar los impresionantes paisajes del departamento del Guaviare, un auténtico paraíso natural en el corazón de Colombia. 
+                Disfruta de caminatas fascinantes a través de la majestuosa Serranía de la Lindosa, donde podrás maravillarte con los enigmáticos pictogramas de la Cueva 
+                de los Tigrillos y las asombrosas formaciones rocosas de la Piedra del Mico. Deleita tus sentidos con la vibrante biodiversidad de la selva amazónica y 
+                los exuberantes paisajes de los caños de la región, como el Caño Cristales, conocido por sus increíbles colores. 
+                No te pierdas la oportunidad de conectar con la naturaleza en su estado más puro y compartir esta aventura con otros apasionados del senderismo. 
+                ¡El Guaviare te espera para una caminata que será, sin duda, un hito en tu vida!
             </p>
         </div>
         <div class="button">
-            <button>INSCRÍBETE AQUÍ</button>
+            <button>
+                <a href="https://forms.gle/UF5CSDSqbYjfXxGw6" target="_blank">INSCRÍBETE AQUÍ</a>
+            </button>
         </div>
     </div>
     <div class="image-container-desktop">
@@ -68,8 +65,20 @@ import { Image } from "astro:assets";
         margin-bottom: 30px;
     }
 
+    section .text-container .text {
+        margin-left: 20px;
+    }
+
+    section .text-container .text span {
+        font-weight: bold;
+    }
+
+    section .text-container .text p {
+        margin-top: 20px;
+    }
+
     section .text-container .button {
-        margin-top: 30px;
+        margin-top: 5px;
         display: flex;
         justify-content: center;
  
@@ -84,6 +93,11 @@ import { Image } from "astro:assets";
         width: 150px;
         height: 50px;
         font-weight: bold;
+    }
+
+    section .text-container .button a {
+        text-decoration: none;
+        color: white;
     }
     
     section .image-container-desktop {
@@ -112,13 +126,12 @@ import { Image } from "astro:assets";
             align-items: center;
         }
 
-        section .text-container h2, section .text-container .text {
-            margin-bottom: 15px;
+        section .text-container h2 {
+            font-size: 25px;
         }
 
-        section .text-container h1 {
-            font-size: 25px;
-            text-align: center;
+        section .text-container h2, section .text-container .text {
+            margin-bottom: 15px;
         }
 
         section .text-container .img-container-mobile {
@@ -149,7 +162,7 @@ import { Image } from "astro:assets";
         }
 
         section .text-container .button button {
-            width: 110px;
+            width: 180px;
             height: 40px;
         }
     }

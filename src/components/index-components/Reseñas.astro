@@ -4,42 +4,48 @@ import { Image } from "astro:assets";
 
 <section>
     <div class="container">
-        <h2>OPINIONES DE NUESTROS ANDANTES</h2>
+        <h2>COMENTARIOS DE NUESTROS CAMINANTES</h2>
         <div class="reseñas-container">
             <div class="reseña">
-                <Image src="https://storage.googleapis.com/andantes-del-guaviare/04-andantes-del-guaviare.png" alt="Image" width="300px" height="150px" class="img"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Esse quibusdam et similique, nostrum nihil provident nemo 
-                    error mollitia facilis, ut quis libero aspernatur saepe minus 
-                    temporibus ipsum sit! Asperiores, culpa.
+                <Image src="https://storage.googleapis.com/andantes-del-guaviare/fernanda.png" alt="Image" width="300px" height="150px" class="img"/>
+                <p>
+                    "Participar en el evento de caminatas organizado por Biapora fue una experiencia transformadora. 
+                    Los recorridos estaban perfectamente organizados, y la oportunidad de explorar la naturaleza 
+                    en su máxima expresión fue simplemente increíble. La atención al detalle y la pasión de los 
+                    guías hicieron que cada paso en el sendero fuera una aventura emocionante. ¡Recomiendo 
+                    encarecidamente estos eventos a cualquier amante de la naturaleza!"
                 </p>
             </div>
             <div class="reseña">
-                <Image src="https://storage.googleapis.com/andantes-del-guaviare/04-andantes-del-guaviare.png" alt="Image" width="300px" height="150px" class="img"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Esse quibusdam et similique, nostrum nihil provident nemo 
-                    error mollitia facilis, ut quis libero aspernatur saepe minus 
-                    temporibus ipsum sit! Asperiores, culpa.
+                <Image src="https://storage.googleapis.com/andantes-del-guaviare/carlos.png" alt="Image" width="300px" height="150px" class="img"/>
+                <p>
+                    "Biapora sabe cómo ofrecer una experiencia de caminatas inolvidable. Cada evento ha sido una mezcla 
+                    perfecta de desafío y belleza natural. Los paisajes son impresionantes, y la calidad del servicio es excepcional. 
+                    Me encantó la forma en que se destacan tanto los aspectos naturales como culturales en cada ruta. 
+                    ¡Ya estoy esperando el próximo evento para volver a sumergirme en la belleza de la naturaleza!"
                 </p>
             </div>
             <div class="reseña">
-                <Image src="https://storage.googleapis.com/andantes-del-guaviare/04-andantes-del-guaviare.png" alt="Image" width="300px" height="150px" class="img"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Esse quibusdam et similique, nostrum nihil provident nemo 
-                    error mollitia facilis, ut quis libero aspernatur saepe minus 
-                    temporibus ipsum sit! Asperiores, culpa.
+                <Image src="https://storage.googleapis.com/andantes-del-guaviare/sofia.png" alt="Image" width="300px" height="150px" class="img"/>
+                <p>
+                    "¡Qué maravillosa experiencia fue el último evento de caminatas con Biapora! La organización fue impecable, 
+                    los guías eran expertos y apasionados, y los senderos eran espectaculares. Fue una oportunidad única para 
+                    conectar con la naturaleza y conocer gente increíble. Los momentos mágicos en cada parada y las vistas 
+                    impresionantes hicieron que cada minuto valiera la pena. ¡Definitivamente estaré participando en futuros eventos!"
                 </p>
             </div>
             <div class="reseña">
-                <Image src="https://storage.googleapis.com/andantes-del-guaviare/04-andantes-del-guaviare.png" alt="Image" width="300px" height="150px" class="img"/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Esse quibusdam et similique, nostrum nihil provident nemo 
-                    error mollitia facilis, ut quis libero aspernatur saepe minus 
-                    temporibus ipsum sit! Asperiores, culpa.
+                <Image src="https://storage.googleapis.com/andantes-del-guaviare/luis.png" alt="Image" width="300px" height="150px" class="img"/>
+                <p>
+                    "Mi experiencia con Biapora superó todas mis expectativas. Desde la planificación hasta la ejecución, 
+                    todo estuvo perfectamente coordinado. Los recorridos eran desafiantes pero accesibles, y la belleza de 
+                    los paisajes era simplemente sobrecogedora. Además, el ambiente de camaradería entre los participantes 
+                    hizo que la experiencia fuera aún más gratificante. ¡Gracias, Biapora, por organizar eventos tan fantásticos!"
                 </p>
             </div>
         </div>
     </div>
+</section>
 
     <style>
         section {
@@ -53,6 +59,14 @@ import { Image } from "astro:assets";
 
         section .container {
             width: 90%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section .container h2 {
+            color: white;
         }
 
         section .container .reseñas-container {
@@ -62,8 +76,37 @@ import { Image } from "astro:assets";
             gap: 20px;
         }
 
-        section .container .reseñas-container .reseña .img {
-            width: 80px
+        section .container .reseñas-container .reseña {
+            width: 650px;
+            color: white;
         }
+
+        section .container .reseñas-container .reseña p{
+            margin-top: 15px;
+        }
+
+        section .container .reseñas-container .reseña .img {
+            width: 180px;
+            border-top-left-radius: 50% 50%;
+            border-top-right-radius: 50% 50%;
+            border-bottom-right-radius: 50% 50%;
+            border-bottom-left-radius: 50% 50%;
+        }
+
+
+        @media (max-width: 768px) {
+            section .container  h2 { 
+                font-size: 25px;
+            }
+
+            section .container .reseñas-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            section .container .reseñas-container .reseña {
+                width: 325px;
+            }
+        }
+        
 
     </style>
