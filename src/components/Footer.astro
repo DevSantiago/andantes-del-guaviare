@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+---
+
+<footer>
+    <div class="container">
+        <div class="datos-generales box">
+            <div class="dato">
+                <span>Ubicación</span>
+                <span>San José Del Guaviare, Guaviare, Colombia</span>
+            </div>
+            <div class="dato">
+                <span>Dirección</span>
+                <span>Casa Grande Centro Cultural, barrio 20 de julio</span>
+            </div>
+            <div class="dato">
+                <span>Correo</span>
+                <span>biapora2024@hotmail.com</span>
+            </div>
+            <div class="dato">
+                <span>Número de teléfono</span>
+                <span>(57) 311-232-8620</span>
+            </div>
+        </div>
+        <div class="redes-sociales box">
+            <div class="red-social">
+                <a href="https://www.facebook.com/biporaandantesdelguaviare?mibextid=LQQJ4d" target="_blank">
+                    <Image src="https://storage.googleapis.com/andantes-del-guaviare/svg/brand-facebook.svg" alt="Image" width="30px" height="30px" class="img-social"/>
+                </a>
+            </div>
+            <div class="red-social">
+                <a href="https://wa.link/ireyc8" target="_blank">
+                    <Image src="https://storage.googleapis.com/andantes-del-guaviare/svg/brand-whatsapp.svg" alt="Image" width="30px" height="30px" class="img-social"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+
+    footer {
+        background-color: beige;
+        margin-top: 20px;
+    }
+
+    footer .container {
+        display: flex;
+        flex-direction: row;
+        justify-content:  space-evenly;
+    }
+
+    footer .container .datos-generales .dato {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    footer .container .datos-generales .dato span:nth-child(1) {
+        font-weight: bold;
+        
+    }
+
+    footer .container .box {
+        margin: 20px;
+    }
+
+    footer .container .redes-sociales {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    footer .container .redes-sociales .red-social {
+        margin: 20px;
+    }
+
+    @media (max-width: 768px) {
+        footer .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer .container .redes-sociales {
+            justify-content: center;
+        }
+
+        footer .container .datos-generales .dato span:nth-child(2) {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    }
+
+
+
+</style>
