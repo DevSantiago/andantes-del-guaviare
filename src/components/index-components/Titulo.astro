@@ -25,7 +25,9 @@ import { Image } from "astro:assets";
             </p>
         </div>
         <div class="button">
-            <button>Conoce más</button>
+            <button>
+                <a href="/eventos">Conoce más</a>   
+            </button>
         </div>
     </div>
     <div class="image-container-desktop">
@@ -80,6 +82,11 @@ import { Image } from "astro:assets";
 
     section .text-container .button {
         margin-top: 30px;
+    }
+
+    section .text-container .button button a {
+        text-decoration: none;  
+        color: black;
     }
 
     section .text-container .button button {
