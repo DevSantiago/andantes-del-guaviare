@@ -1,84 +1,135 @@
 ---
 import { Image } from "astro:assets";
+
+let eventos = [];
+
+try {
+    const response = await fetch("http://127.0.0.1:1337/api/eventos");
+    console.log('Status:', response.status); // Verificar el estado de la respuesta
+    if (!response.ok) {
+        console.log('Response details:', await response.text()); // Ver detalles del error
+        throw new Error(`Error al intentar obtener los eventos: ${response.statusText}`);
+    }
+    const result = await response.json();
+    console.log(result); // Ver el resultado
+    eventos = result.data;
+} catch (error) {
+    console.error('Error:', error);
+}
 ---
 
 <section>
     <h2>EVENTOS PRÓXIMOS</h2>
     <div class="container">
         <div class="subtitle">
-            <span>1ER ENCUENTRO REGIONAL DE CAMINANTES 2024 - SAN JOSE DEL GUAVIARE, GUAVIARE - COLOMBIA</span>
+            <span
+                >1ER ENCUENTRO REGIONAL DE CAMINANTES 2024 - SAN JOSE DEL
+                GUAVIARE, GUAVIARE - COLOMBIA</span
+            >
         </div>
         <div class="text">
             <span>
-                ¡Prepárate para una experiencia inolvidable en el 1er ENCUENTRO REGIONAL DE CAMINANTES 2024 en San José del Guaviare! Del 10 al 14 de octubre.
+                ¡Prepárate para una experiencia inolvidable en el 1er ENCUENTRO
+                REGIONAL DE CAMINANTES 2024 en San José del Guaviare! Del 10 al
+                14 de octubre.
             </span>
-            <p> 
-                Este evento te invita a explorar los impresionantes paisajes del departamento del Guaviare, un auténtico paraíso natural en el corazón de Colombia. 
-                Disfruta de caminatas fascinantes a través de la majestuosa Serranía de la Lindosa, donde podrás maravillarte con los enigmáticos pictogramas 
-                de la Cueva de los Tigrillos y las asombrosas formaciones rocosas de la Piedra del Mico. Deleita tus sentidos con la vibrante biodiversidad de la selva amazónica 
-                y los exuberantes paisajes de los caños de la región, como el Caño Cristales, conocido por sus increíbles colores. No te pierdas la oportunidad de 
-                conectar con la naturaleza en su estado más puro y compartir esta aventura con otros apasionados del senderismo. ¡El Guaviare te espera para una caminata que será, 
-                sin duda, un hito en tu vida!
+            <p>
+                Este evento te invita a explorar los impresionantes paisajes del
+                departamento del Guaviare, un auténtico paraíso natural en el
+                corazón de Colombia. Disfruta de caminatas fascinantes a través
+                de la majestuosa Serranía de la Lindosa, donde podrás
+                maravillarte con los enigmáticos pictogramas de la Cueva de los
+                Tigrillos y las asombrosas formaciones rocosas de la Piedra del
+                Mico. Deleita tus sentidos con la vibrante biodiversidad de la
+                selva amazónica y los exuberantes paisajes de los caños de la
+                región, como el Caño Cristales, conocido por sus increíbles
+                colores. No te pierdas la oportunidad de conectar con la
+                naturaleza en su estado más puro y compartir esta aventura con
+                otros apasionados del senderismo. ¡El Guaviare te espera para
+                una caminata que será, sin duda, un hito en tu vida!
             </p>
         </div>
         <div class="image-desktop">
-            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="800px" height="500px" class="img-desktop"/>
+            <Image
+                src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg"
+                alt="Image"
+                width="800px"
+                height="500px"
+                class="img-desktop"
+            />
         </div>
         <div class="image-mobile">
-            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="320px" height="150px" class="img-desktop"/>
+            <Image
+                src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg"
+                alt="Image"
+                width="320px"
+                height="150px"
+                class="img-desktop"
+            />
         </div>
         <div class="text">
-            <span>
-                RUTAS DISPONIBLES
-            </span>
+            <span> RUTAS DISPONIBLES </span>
+            {eventos.map((evento) => (  
             <div class="ruta">
-                <span>CERRO AZUL - RUTA ALTA</span>
+                <span>{evento.attributes.Titulo}</span>
                 <div class="texto-ruta">
-                    <p> 
-                        Se toma el vehículo desde la plazoleta de la Gobernación 05:00 AM hasta el kilómetro 10 vía San José – Puerto Arturo 
-                        y se sigue hasta la finca en donde se encuentra el cerro, y de ahí se inicia la caminata de aproximadamente 40 minutos 
-                        con un nivel de exigencia alto para llegar la cima. Esta ruta tiene los tres niveles en caminata. En este cerro podrán 
-                        observar pinturas rupestres muestra del pasado precolombino con una antigüedad de más más de 1.000 años y son sumamente 
-                        importantes en los hallazgos arqueológicos de la zona.  Distancia 47 Kilómetros.
-                    </p> 
+                    <p>
+                    </p>
+                        {evento.attributes.Contenido}
+                    </p>
                 </div>
                 <div class="imagenes-ruta">
                     <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/19-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
+                        <img
+                            src={evento.attributes.url_img1}
+                            alt="Image"
+                            width="340px"
+                            height="190px"
+                            class="img-ruta"
+                        />
                     </div>
                     <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/18-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
+                        <img
+                            src={evento.attributes.url_img2}
+                            alt="Image"
+                            width="340px"
+                            height="190px"
+                            class="img-ruta"
+                        />
                     </div>
                     <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/17-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
+                        <img
+                            src={evento.attributes.url_img3}
+                            alt="Image"
+                            width="340px"
+                            height="190px"
+                            class="img-ruta"
+                        />
                     </div>
                 </div>
             </div>
+            ))}
         </div>
         <div class="ubicacion-inscripcion">
             <div class="ubicacion">
                 <div class="fecha">
-                    <img src="./calendar-stats.svg" alt="">
-                    <p>
-                       10 - 14 de octubre de 2024
-                    </p>
+                    <img src="./calendar-stats.svg" alt="" />
+                    <p>10 - 14 de octubre de 2024</p>
                 </div>
                 <div class="pin">
-                    <img src="./map-pin.svg" alt="">
-                    <p>
-                        Guaviare, San José del Guaviare.
-                    </p>
+                    <img src="./map-pin.svg" alt="" />
+                    <p>Guaviare, San José del Guaviare.</p>
                 </div>
                 <div class="costo">
-                    <img src="./coin.svg" alt="">
-                    <p>
-                        $110.000 COP
-                    </p>
+                    <img src="./coin.svg" alt="" />
+                    <p>$110.000 COP</p>
                 </div>
             </div>
             <div class="inscripcion">
                 <button>
-                    <a href="http://forms.gle/UF5CSDSqbYjfXxGw6" target="_blank">INSCRIBÍTE AQUÍ</a>
+                    <a href="http://forms.gle/UF5CSDSqbYjfXxGw6" target="_blank"
+                        >INSCRIBÍTE AQUÍ</a
+                    >
                 </button>
             </div>
         </div>
@@ -86,7 +137,6 @@ import { Image } from "astro:assets";
 </section>
 
 <style>
-
     section {
         text-align: center;
         display: flex;
@@ -139,7 +189,6 @@ import { Image } from "astro:assets";
         flex-direction: row;
         justify-content: space-around;
         margin-top: 20px;
-        
     }
 
     section .container .image-desktop {
@@ -161,13 +210,17 @@ import { Image } from "astro:assets";
         width: 70%;
     }
 
-    .fecha, .pin, .costo {
+    .fecha,
+    .pin,
+    .costo {
         display: flex;
         flex-direction: row;
         margin: 30px 20px 30px 20px;
     }
 
-    .fecha p, .pin p, .costo p {
+    .fecha p,
+    .pin p,
+    .costo p {
         margin-left: 10px;
     }
 
@@ -194,7 +247,6 @@ import { Image } from "astro:assets";
     }
 
     @media (max-width: 768px) {
-
         * {
             box-sizing: border-box;
             margin: 0;
