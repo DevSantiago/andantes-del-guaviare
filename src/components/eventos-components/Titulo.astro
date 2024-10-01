@@ -1,254 +1,129 @@
 ---
 import { Image } from "astro:assets";
+
+let eventos = [];
+
+try {
+    const response = await fetch("https://cms-andantes.onrender.com/api/eventos");
+    console.log('Status:', response.status); // Verificar el estado de la respuesta
+    if (!response.ok) {
+        console.log('Response details:', await response.text()); // Ver detalles del error
+        throw new Error(`Error al intentar obtener los eventos: ${response.statusText}`);
+    }
+    const result = await response.json();
+    console.log(result); // Ver el resultado
+    eventos = result.data;
+} catch (error) {
+    console.error('Error:', error);
+}
+
+
+let boletines = [];
+
+try {
+    const response = await fetch("https://cms-andantes.onrender.com/api/boletins");
+    console.log('Status:', response.status); // Verificar el estado de la respuesta
+    if (!response.ok) {
+        console.log('Response details:', await response.text()); // Ver detalles del error
+        throw new Error(`Error al intentar obtener los boletines: ${response.statusText}`);
+    }
+    const result = await response.json();
+    console.log(result); // Ver el resultado
+    boletines = result.data;
+} catch (error) {
+    console.error('Error:', error);
+}
+
+boletines.reverse();
+
+
 ---
 
 <section>
     <h2>EVENTOS PRÓXIMOS</h2>
     <div class="container">
-        <div class="subtitle">
-            <span>1ER ENCUENTRO REGIONAL DE CAMINANTES 2024 - SAN JOSE DEL GUAVIARE, GUAVIARE - COLOMBIA</span>
+        <div class="comunicados">
+            {boletines.map((boletin) => (
+                <div class="comunicado">
+                    <div class="subtitle">
+                        <span>
+                            {boletin.attributes.TITULO}
+                        </span>
+                    </div>
+                    <div class="text">
+                        <span>
+                            {boletin.attributes.SUBTITULO}
+                        </span>
+                        <p>
+                            {boletin.attributes.CONTENIDO}
+                        </p>
+                    </div>
+                </div>
+            ))}
         </div>
         <div class="text">
-            <span>
-                ¡Prepárate para una experiencia inolvidable en el 1er ENCUENTRO REGIONAL DE CAMINANTES 2024 en San José del Guaviare! Del 10 al 14 de octubre.
-            </span>
-            <p> 
-                Este evento te invita a explorar los impresionantes paisajes del departamento del Guaviare, un auténtico paraíso natural en el corazón de Colombia. 
-                Disfruta de caminatas fascinantes a través de la majestuosa Serranía de la Lindosa, donde podrás maravillarte con los enigmáticos pictogramas 
-                de la Cueva de los Tigrillos y las asombrosas formaciones rocosas de la Piedra del Mico. Deleita tus sentidos con la vibrante biodiversidad de la selva amazónica 
-                y los exuberantes paisajes de los caños de la región, como el Caño Cristales, conocido por sus increíbles colores. No te pierdas la oportunidad de 
-                conectar con la naturaleza en su estado más puro y compartir esta aventura con otros apasionados del senderismo. ¡El Guaviare te espera para una caminata que será, 
-                sin duda, un hito en tu vida!
-            </p>
+            <span> RUTAS DISPONIBLES </span>
+            {eventos.map((evento) => (  
+            <div class="ruta">
+                <span>{evento.attributes.Titulo}</span>
+                <div class="texto-ruta">
+                    <p>
+                    </p>
+                        {evento.attributes.Contenido}
+                    </p>
+                </div>
+                <div class="imagenes-ruta">
+                    <div class="imagen-ruta">
+                        <img
+                            src={evento.attributes.url_img1}
+                            alt="Image"
+                            width="340px"
+                            height="190px"
+                            class="img-ruta"
+                        />
+                    </div>
+                    <div class="imagen-ruta">
+                        <img
+                            src={evento.attributes.url_img2}
+                            alt="Image"
+                            width="340px"
+                            height="190px"
+                            class="img-ruta"
+                        />
+                    </div>
+                    <div class="imagen-ruta">
+                        <img
+                            src={evento.attributes.url_img3}
+                            alt="Image"
+                            width="340px"
+                            height="190px"
+                            class="img-ruta"
+                        />
+                    </div>
+                </div>
+            </div>
+            ))}
         </div>
-        <div class="image-desktop">
-            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="800px" height="500px" class="img-desktop"/>
-        </div>
-        <div class="image-mobile">
-            <Image src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg" alt="Image" width="320px" height="150px" class="img-desktop"/>
-        </div>
-        <div class="text">
-            <span>
-                RUTAS DISPONIBLES
-            </span>
-            <div class="ruta">
-                <span>CERRO AZUL - RUTA ALTA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se toma el vehículo desde la plazoleta de la Gobernación 05:00 AM hasta el kilómetro 10 vía San José – Puerto Arturo 
-                        y se sigue hasta la finca en donde se encuentra el cerro, y de ahí se inicia la caminata de aproximadamente 40 minutos 
-                        con un nivel de exigencia alto para llegar la cima. Esta ruta tiene los tres niveles en caminata. En este cerro podrán 
-                        observar pinturas rupestres muestra del pasado precolombino con una antigüedad de más más de 1.000 años y son sumamente 
-                        importantes en los hallazgos arqueológicos de la zona.  Distancia 47 Kilómetros.
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/19-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/18-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/17-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>CASCADAS LAS DELICIAS - RUTA ALTA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se toma el vehículo desde la plazoleta de la Gobernación 05:00 AM hasta el kilómetro 10 mata bambú, 
-                        allí se da inicio a la Caminata la Cascada las Delicias, la cascada es una bella catarata de 26 metros de altura. Distancia 20.6 Kilómetros.  
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/22-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/21-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/20-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>NARIGUA - RUTA ALTA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se toma el vehículo desde la plazoleta de la Gobernación a las 05:00 AM hasta el Puente Nowen, se desvía por la vía de Puerto Arturo con rumbo 
-                        el Mirador Narigua ubicado en la vereda Bocas el Guayabero del municipio San José del Guaviare. Distancia 17 Kilómetros. 
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/25-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/24-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/23-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>PUERTA DE ORION - RUTA MEDIA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se toma el vehículo desde la plazoleta de la Gobernación 06:00 AM hasta el kilómetro 9.5 kiosco azul vía Puerto Arturo,
-                        PUERTA DE ORION: Se toma el vehículo desde la plazoleta de la Gobernación 07:00 am hasta el kilómetro 9.5 kiosco azul vía Puerto Arturo, 
-                        inicia la caminata por el sector de la antigua Arenera, Puerta de Orión donde el caminante podrá apreciar un monumento natural que 
-                        forma con su piedra un arco por el cual es posible observar el Cinturón de Orión. Distancia 8.6 Kilómetros. 
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/28-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/27-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/26-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>GALLITO DE ROCA - RUTA MEDIA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se toma el vehículo desde la plazoleta de la Gobernación 06:00 AM hasta el kilómetro 9.5 kiosco azul vía Puerto Arturo, 
-                        inicia caminata hacia la Reserva Natural Gallito de Roca, reserva que se encuentra a tan sola 20 minutos del casco urbano 
-                        de San José del Guaviare, por un sendero de aproximadamente 1.75 km, donde se podrá apreciar las plantas de colores (Macarenia Clavigera). 
-                        Distancia 12 Kilómetros aproximadamente.
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/29-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/30-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/31-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>CHEYENNE - RUTA MEDIA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se toma el vehículo desde la plazoleta de la Gobernación 06:00 AM hasta el kilómetro 7 vereda la Lindosa, de ahí se inicia el recorrido 
-                        por Charco Indio, pozos naturales y finca el Cheyenne, recorrido aproximado de 2 horas y media. Distancia 9.8 Kilómetros.
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/32-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/34-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/33-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>PUENTES NATURALES - RUTA BAJA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Salida en vehículo des la plazoleta de la Gobernación a las 07:00 AM hasta el sitio conocido como Picapiedra. 
-                        Los puentes naturales son cavernas insondables bajo lozas que comunican las laderas de un cañón.  Esta formación espontánea, en inmediaciones 
-                        de la serranía de La Lindosa, es un destino recomendado. Los soportes naturales de la estructura representan, además, una experiencia llena de emoción, 
-                        suspenso y adrenalina. Distancia 13 Kilómetros.
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/35-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/36-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/37-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>ETNICA PANURE REFUGIO - RUTA BAJA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se inicia el recorrido desde la plazoleta de la Gobernación a las 07:00 AM, hacia el Resguardo Indígena de Panure y su humedal, 
-                        se continua hasta el barrio Santo Domingo llegando al Resguardo Indígena el Refugio, en este lugar, los caminantes se deleitarán 
-                        con un buen refrigerio autóctono y venta de artesanías; de regreso entraremos al Resguardo Indígena de Panure donde se tendrá 
-                        a la venta el almuerzo como es el Pescado Muquiao con Casabe, bebidas como (manicuera de Piña, patabá). Distancia 11,7 kilómetros.
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/38-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/39-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/40-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
-            <div class="ruta">
-                <span>PATRIMONIAL - RUTA BAJA</span>
-                <div class="texto-ruta">
-                    <p> 
-                        Se inicia el recorrido desde la plazoleta de la Gobernación a las 07:00 AM, donde el caminante tendrá la oportunidad de conocer algo de la 
-                        Historia de San José del Guaviare, visitando el busto del señor Nepomuceno González, Monumento al Colono, el Aeropuerto Jorge Enrique 
-                        González Torres y Monumento de los soldados caídos, Monumento a las Víctimas, Monumento del señor Néstor Gaviria, el Centro de Memoria 
-                        Histórica Municipal y Departamental, el Malecón, Puerto Pescadores, de Pasajeros y de Carga, Secretaria de Cultura y Turismo el recorrido 
-                        se terminará en el Parque Central de la Constitución donde los caminantes podrán realizar compras de Artesanías de la región. Distancia 8 kilómetros.
-                    </p> 
-                </div>
-                <div class="imagenes-ruta">
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/42-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/43-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                    <div class="imagen-ruta">
-                        <Image src="https://storage.googleapis.com/andantes-del-guaviare/44-andantes-del-guaviare.jpeg" alt="Image" width="340px" height="190px" class="img-ruta"/>
-                    </div>
-                </div>
-            </div>
         <div class="ubicacion-inscripcion">
             <div class="ubicacion">
                 <div class="fecha">
-                    <img src="./calendar-stats.svg" alt="">
-                    <p>
-                       10 - 14 de octubre de 2024
-                    </p>
+                    <img src="./calendar-stats.svg" alt="" />
+                    <p>10 - 14 de octubre de 2024</p>
                 </div>
                 <div class="pin">
-                    <img src="./map-pin.svg" alt="">
-                    <p>
-                        Guaviare, San José del Guaviare.
-                    </p>
+                    <img src="./map-pin.svg" alt="" />
+                    <p>Guaviare, San José del Guaviare.</p>
                 </div>
                 <div class="costo">
-                    <img src="./coin.svg" alt="">
-                    <p>
-                        $110.000 COP
-                    </p>
+                    <img src="./coin.svg" alt="" />
+                    <p>$110.000 COP</p>
                 </div>
             </div>
             <div class="inscripcion">
                 <button>
-                    <a href="http://forms.gle/UF5CSDSqbYjfXxGw6" target="_blank">INSCRIBÍTE AQUÍ</a>
+                    <a href="http://forms.gle/UF5CSDSqbYjfXxGw6" target="_blank"
+                        >INSCRIBÍTE AQUÍ</a
+                    >
                 </button>
             </div>
         </div>
@@ -256,7 +131,6 @@ import { Image } from "astro:assets";
 </section>
 
 <style>
-
     section {
         text-align: center;
         display: flex;
@@ -269,9 +143,13 @@ import { Image } from "astro:assets";
         margin-top: 20px;
     }
 
-    .container {
+    section .container {
         text-align: left;
         width: 80%;
+        margin-top: 20px;
+    }
+
+    section .container .comunicados .comunicado {
         margin-top: 20px;
     }
 
@@ -309,7 +187,6 @@ import { Image } from "astro:assets";
         flex-direction: row;
         justify-content: space-around;
         margin-top: 20px;
-        
     }
 
     section .container .image-desktop {
@@ -331,13 +208,17 @@ import { Image } from "astro:assets";
         width: 70%;
     }
 
-    .fecha, .pin, .costo {
+    .fecha,
+    .pin,
+    .costo {
         display: flex;
         flex-direction: row;
         margin: 30px 20px 30px 20px;
     }
 
-    .fecha p, .pin p, .costo p {
+    .fecha p,
+    .pin p,
+    .costo p {
         margin-left: 10px;
     }
 
@@ -364,7 +245,6 @@ import { Image } from "astro:assets";
     }
 
     @media (max-width: 768px) {
-
         * {
             box-sizing: border-box;
             margin: 0;
