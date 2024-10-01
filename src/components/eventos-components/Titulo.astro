@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 let eventos = [];
 
 try {
-    const response = await fetch("http://127.0.0.1:1337/api/eventos");
+    const response = await fetch("https://cms-andantes.onrender.com/api/eventos");
     console.log('Status:', response.status); // Verificar el estado de la respuesta
     if (!response.ok) {
         console.log('Response details:', await response.text()); // Ver detalles del error
@@ -16,56 +16,50 @@ try {
 } catch (error) {
     console.error('Error:', error);
 }
+
+
+let boletines = [];
+
+try {
+    const response = await fetch("https://cms-andantes.onrender.com/api/boletins");
+    console.log('Status:', response.status); // Verificar el estado de la respuesta
+    if (!response.ok) {
+        console.log('Response details:', await response.text()); // Ver detalles del error
+        throw new Error(`Error al intentar obtener los boletines: ${response.statusText}`);
+    }
+    const result = await response.json();
+    console.log(result); // Ver el resultado
+    boletines = result.data;
+} catch (error) {
+    console.error('Error:', error);
+}
+
+boletines.reverse();
+
+
 ---
 
 <section>
     <h2>EVENTOS PRÓXIMOS</h2>
     <div class="container">
-        <div class="subtitle">
-            <span
-                >1ER ENCUENTRO REGIONAL DE CAMINANTES 2024 - SAN JOSE DEL
-                GUAVIARE, GUAVIARE - COLOMBIA</span
-            >
-        </div>
-        <div class="text">
-            <span>
-                ¡Prepárate para una experiencia inolvidable en el 1er ENCUENTRO
-                REGIONAL DE CAMINANTES 2024 en San José del Guaviare! Del 10 al
-                14 de octubre.
-            </span>
-            <p>
-                Este evento te invita a explorar los impresionantes paisajes del
-                departamento del Guaviare, un auténtico paraíso natural en el
-                corazón de Colombia. Disfruta de caminatas fascinantes a través
-                de la majestuosa Serranía de la Lindosa, donde podrás
-                maravillarte con los enigmáticos pictogramas de la Cueva de los
-                Tigrillos y las asombrosas formaciones rocosas de la Piedra del
-                Mico. Deleita tus sentidos con la vibrante biodiversidad de la
-                selva amazónica y los exuberantes paisajes de los caños de la
-                región, como el Caño Cristales, conocido por sus increíbles
-                colores. No te pierdas la oportunidad de conectar con la
-                naturaleza en su estado más puro y compartir esta aventura con
-                otros apasionados del senderismo. ¡El Guaviare te espera para
-                una caminata que será, sin duda, un hito en tu vida!
-            </p>
-        </div>
-        <div class="image-desktop">
-            <Image
-                src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg"
-                alt="Image"
-                width="800px"
-                height="500px"
-                class="img-desktop"
-            />
-        </div>
-        <div class="image-mobile">
-            <Image
-                src="https://storage.googleapis.com/andantes-del-guaviare/01-andantes-del-guaviare.jpg"
-                alt="Image"
-                width="320px"
-                height="150px"
-                class="img-desktop"
-            />
+        <div class="comunicados">
+            {boletines.map((boletin) => (
+                <div class="comunicado">
+                    <div class="subtitle">
+                        <span>
+                            {boletin.attributes.TITULO}
+                        </span>
+                    </div>
+                    <div class="text">
+                        <span>
+                            {boletin.attributes.SUBTITULO}
+                        </span>
+                        <p>
+                            {boletin.attributes.CONTENIDO}
+                        </p>
+                    </div>
+                </div>
+            ))}
         </div>
         <div class="text">
             <span> RUTAS DISPONIBLES </span>
@@ -149,9 +143,13 @@ try {
         margin-top: 20px;
     }
 
-    .container {
+    section .container {
         text-align: left;
         width: 80%;
+        margin-top: 20px;
+    }
+
+    section .container .comunicados .comunicado {
         margin-top: 20px;
     }
 
