@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 let eventos = [];
 
 try {
-    const response = await fetch("https://cms-andantes.onrender.com/api/eventos");
+    const response = await fetch("http://193.203.165.67:1338/api/eventos");
     console.log('Status:', response.status); // Verificar el estado de la respuesta
     if (!response.ok) {
         console.log('Response details:', await response.text()); // Ver detalles del error
@@ -21,7 +21,7 @@ try {
 let boletines = [];
 
 try {
-    const response = await fetch("https://cms-andantes.onrender.com/api/boletins");
+    const response = await fetch("http://193.203.165.67:1338/api/boletins");
     console.log('Status:', response.status); // Verificar el estado de la respuesta
     if (!response.ok) {
         console.log('Response details:', await response.text()); // Ver detalles del error
